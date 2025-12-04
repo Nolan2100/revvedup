@@ -1,0 +1,255 @@
+/* styles.css — Revved Up: sleek & minimalistic car site */
+
+/* -------------------------
+   Variables & Base
+   ------------------------- */
+:root{
+  --bg:#0b0d10;             /* deep charcoal */
+  --panel:#0f1417;          /* slightly lighter */
+  --muted:#9aa3ab;          /* muted text */
+  --text:#f7f8fa;           /* primary text */
+  --accent:#ff3b30;         /* revved red accent */
+  --accent-2:#ff6b5e;       /* softer accent for gradients */
+  --glass: rgba(255,255,255,0.03);
+  --radius:12px;
+  --container:1100px;
+  --shadow: 0 6px 20px rgba(2,6,12,0.6);
+  --ease: cubic-bezier(.2,.9,.2,1);
+  --gap:18px;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  font-size:16px;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  color-scheme: dark;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background:linear-gradient(180deg,var(--bg), #060708 70%);
+  color:var(--text);
+  line-height:1.45;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+.brand-links{
+  display: grid;
+  grid-template-columns: repeat(5, minmax(120px, 1fr));
+  gap: 20px;
+  /* remove explicit grid-template-rows so rows size naturally */
+  align-items: center;
+  justify-items: center;
+  margin-top: 40px;
+  padding: 20px;
+  border-radius: 12px;
+   border: 2px solid rgba(255,255,255,0.06);
+}
+
+.brand-links a.btn{
+  cursor: pointer;
+  color: #fff;                /* ensure readable text */
+  width:100%;
+  justify-content:center;
+  text-align:center;
+  box-sizing: border-box;
+  /* visible button border (overrides .btn's transparent border) */
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+.brand-links a.btn:hover,
+.brand-links a.btn:focus{
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(2,6,12,0.45);
+  border-color: #ffffff;
+}
+
+.brand-links h3{
+  margin: 0;
+  color: #67e7f0;
+}
+  /* -------------------------
+   Layout Utilities
+   ------------------------- */
+.container{
+  width:100%;
+  max-width:var(--container);
+  margin:0 auto;
+  padding:40px 20px;
+}
+.header-inner, .hero-inner{display:flex; align-items:center; justify-content:space-between; gap:var(--gap);}
+
+/* -------------------------
+   Header / Nav
+   ------------------------- */
+.site-header{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background: linear-gradient(180deg, rgba(11,13,16,0.6), rgba(11,13,16,0.35));
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+.brand{
+  font-weight:700;
+  letter-spacing:1px;
+  text-decoration:none;
+  color:var(--text);
+  font-size:1.05rem;
+}
+.brand .accent{
+  color:var(--accent);
+  margin-left:6px;
+  font-weight:800;
+}
+
+/* simple nav */
+.nav{
+  display:flex;
+  gap:18px;
+}
+.nav a{
+  color:var(--muted);
+  text-decoration:none;
+  font-weight:500;
+  padding:6px 10px;
+  border-radius:8px;
+}
+.nav a:hover, .nav a:focus{color:var(--text); background:var(--glass); outline:none;}
+
+/* -------------------------
+   Hero
+   ------------------------- */
+.hero{
+  padding:80px 0;
+  background: linear-gradient(90deg, rgba(255,255,255,0.02), transparent 40%);
+  border-bottom: 1px solid rgba(255,255,255,0.02);
+}
+.hero-inner{flex-direction:column; align-items:flex-start; text-align:left; gap:18px;}
+.hero h1{
+  margin:0;
+  font-size: clamp(1.8rem, 4vw, 3.4rem);
+  letter-spacing:-0.02em;
+  line-height:1.02;
+}
+.lead{
+  margin:0;
+  color:var(--muted);
+  max-width:70ch;
+}
+.hero-ctas{display:flex; gap:12px; margin-top:12px; flex-wrap:wrap}
+
+/* -------------------------
+   Buttons
+   ------------------------- */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  text-decoration:none;
+  padding:10px 14px;
+  border-radius:10px;
+  font-weight:600;
+  font-size:0.95rem;
+  transition:transform .18s var(--ease), box-shadow .18s var(--ease);
+  box-shadow:none;
+  border: 1px solid transparent;
+}
+.btn:focus{outline:3px solid rgba(255,59,48,0.12)}
+.btn.small{padding:6px 10px; font-size:0.85rem}
+
+.btn.primary{
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(255,59,48,0.12);
+  transform: translateY(0);
+}
+.btn.primary:hover{transform: translateY(-4px); box-shadow: 0 18px 40px rgba(255,59,48,0.14);}
+
+.btn.ghost{
+  background:transparent;
+  color:var(--text);
+  border:1px solid rgba(255,255,255,0.04);
+}
+.btn.ghost:hover{background:var(--glass)}
+
+/* -------------------------
+   Cars Grid & Cards
+   ------------------------- */
+.cars{
+  display:grid;
+  gap:20px;
+  grid-template-columns: repeat(3, minmax(500px, 1fr));
+  grid-template-rows: auto;
+  padding:40px 0;
+
+}
+
+.car-card{
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.006));
+  border: 1px solid rgba(255,255,255,0.03);
+  border-radius: 12px;
+  overflow:hidden;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  transition: transform .22s var(--ease), box-shadow .22s var(--ease);
+  color: rgb(50, 191, 196);
+}
+.car-card:hover{
+  transform: translateY(-8px);
+  box-shadow: 0 24px 60px rgba(2,6,12,0.75);
+}
+.car-media{
+  height:350px;
+  background-size:cover;
+  background-position:center;
+  filter: contrast(1.02) saturate(1.05);
+}
+.car-body{padding:16px 18px 20px}
+.car-body h3{margin:0 0 6px 0; font-size:1.05rem}
+.muted{color:var(--muted); font-size:0.92rem; margin:0}
+.card-row{display:flex; align-items:center; justify-content:space-between; margin-top:12px}
+.price{font-weight:700; color:var(--text)}
+
+/* -------------------------
+   Footer
+   ------------------------- */
+.site-footer{
+  padding:24px 0;
+  border-top:1px solid rgba(255,255,255,0.02);
+  color:var(--muted);
+  background:transparent;
+}
+
+/* -------------------------
+   Responsive tweaks
+   ------------------------- */
+@media (min-width:900px){
+  .hero-inner{flex-direction:row; align-items:center; justify-content:space-between}
+  .hero .lead{max-width:48ch}
+}
+@media (max-width:700px){
+  .nav{display:none}
+  .header-inner{padding:12px 20px}
+  .container{padding:24px 18px}
+  .site-header{padding:8px 0}
+}
+
+@media (max-width:600px){
+  .brand-links{
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 16px;
+  }
+}
+
+/* -------------------------
+   Accessibility & small polish
+   ------------------------- */
+a{color:inherit}
+:focus{outline-color:var(--accent)}
+img{max-width:100%; height:auto; display:block}
